@@ -7,4 +7,5 @@ public interface Lista<T> {
     T remove(int pos);
     boolean remove (T valor);
     int size();
+
 }
