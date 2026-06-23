@@ -1,11 +1,8 @@
 package teste;
-
 import lista.Lista;
 import lista.ListaEncadeada;
 import lista.ListaUtil;
 import lista.ListaVetor;
-
-import java.util.List;
 
 public class Main {
 
@@ -27,24 +24,24 @@ public class Main {
         lista.add("Ana");
         lista.add("Vitor");
 
-
-        print(lista);
+        ListaUtil.print(lista);
 
         // CRIA LISTA COM NUMERO
         Lista<Integer> listaNum = new ListaEncadeada<>();
 
         listaNum.add(3);
         listaNum.add(6);
-        print(listaNum);
+
+        ListaUtil.print(listaNum);
 
         //BUSCA POR NUMERO
-        boolean existeNum = buscar(listaNum,3);
+        boolean existeNum = ListaUtil.contains(listaNum, 3);
         System.out.println(existeNum);
 
 
-        // BUSCA (não fiz contains na interface, então coloquei aqui para testar)
+        // BUSCA (CONTAINS)
         System.out.println("\n=== BUSCA ===");
-        boolean existeMaria = buscar(lista, "Maria");
+        boolean existeMaria = ListaUtil.contains(lista, "Maria");
         System.out.println("Existe Maria? " + existeMaria);
 
 
@@ -57,10 +54,9 @@ public class Main {
         boolean removeuPedro = lista.remove("Pedro");
         System.out.println("Removeu Pedro? " + removeuPedro);
 
-        print(lista);
+        ListaUtil.print(lista);
 
         // LISTAUTIL
-
         System.out.println("\n=== MAX / MIN / COUNT ===");
         System.out.println("Maior (alfabético): " + ListaUtil.max(lista));
         System.out.println("Menor (alfabético): " + ListaUtil.min(lista));
@@ -68,23 +64,6 @@ public class Main {
 
         // FINAL
         System.out.println("\n=== LISTA FINAL ===");
-        print(lista);
-    }
-
-    // PRINT (LISTAR TODOS)
-    private static <T> void print(Lista<T> lista) {
-        for (int i = 0; i < lista.size(); i++) {
-            System.out.println(lista.get(i));
-        }
-    }
-
-    // BUSCA (SIMULA CONTAINS)
-    private static <T> boolean buscar(Lista<T> lista, T valor) {
-        for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).equals(valor)) {
-                return true;
-            }
-        }
-        return false;
+        ListaUtil.print(lista);
     }
 }

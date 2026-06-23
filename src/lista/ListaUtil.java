@@ -2,18 +2,18 @@ package lista;
 
 public class ListaUtil {
 
-    public static <T> int count(Lista<T> lista, T elemento) {
+    public static <T> int count(Lista<T> lista, T elemento) {                       // conta quantas vezes o elemento aparece na lista
         int contador = 0;
 
         for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i) != null && lista.get(i).equals(elemento)) {
+            if (lista.get(i) != null && lista.get(i).equals(elemento)) {                  //percorre a lista e usa equals para contar quantas vezes o elemento aparece
                 contador++;
             }
         }
         return contador;
     }
 
-    public static <T extends Comparable<? super T>> T max(Lista<T> lista) {
+    public static <T extends Comparable<? super T>> T max(Lista<T> lista) {                    // "?" - qualquer tipo que se encaixe nessa regra
 
         if (lista.size() == 0) {
             throw new IllegalArgumentException("Lista vazia");
@@ -45,5 +45,20 @@ public class ListaUtil {
         }
 
         return menor;
+    }
+
+    public static <T> void print(Lista<T> lista) {
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.get(i));
+        }
+    }
+
+    public static <T> boolean contains(Lista<T> lista, T valor) {
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).equals(valor)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

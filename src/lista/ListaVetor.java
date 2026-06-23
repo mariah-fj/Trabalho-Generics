@@ -8,7 +8,7 @@ public class ListaVetor <T> implements Lista<T>{
     // criando  vetor com capacidade para 10 elementos
     @SuppressWarnings("unchecked")
     public ListaVetor(){
-        itens = (T[]) new Object[10];
+        itens = (T[]) new Object[10];   // java nao permite criar vetor generico direto, entao usamos cast (conversao de tipo)
         size = 0;
     }
 
@@ -63,6 +63,6 @@ public class ListaVetor <T> implements Lista<T>{
 
     @Override
     public int size() {
-        return size;
+        return size;          // retorna quantos elementos estao na lista
     }
 }
