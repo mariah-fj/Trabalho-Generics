@@ -47,15 +47,15 @@ public class ListaUtil {
         return menor;
     }
 
-    public static <T> void print(Lista<T> lista) {
+    public static <T> void print(Lista<T> lista) {                            //imprime todos os elementos da lista
         for (int i = 0; i < lista.size(); i++) {
             System.out.println(lista.get(i));
         }
     }
 
-    public static <T> boolean contains(Lista<T> lista, T valor) {
+    public static <T> boolean contains(Lista<T> lista, T valor) {               //verifica se um valor existe dentro da lista
         for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).equals(valor)) {
+            if (valor.equals(lista.get(i))) {
                 return true;
             }
         }
