@@ -1,50 +1,79 @@
 package teste;
 
+import lista.Lista;
 import lista.ListaEncadeada;
-import lista.ListaVetor;
+import lista.ListaUtil;
 
 public class Main {
+
     public static void main(String[] args) {
 
-       // ListaVetor<String> lista = new ListaVetor<>();
-        ListaEncadeada<String> lista = new ListaEncadeada<>();
+        testListaString();
+        testListaNumeros();
+    }
 
-        // Adicionando elementos
+    // =========================
+    // TESTES COM STRING
+    // =========================
+    private static void testListaString() {
+
+        Lista<String> lista = new ListaEncadeada<>();
+
         lista.add("Maria");
         lista.add("Ana");
         lista.add("Joao");
 
-        System.out.println("Lista inicial:");
-        System.out.println(lista.get(0));
-        System.out.println(lista.get(1));
-        System.out.println(lista.get(2));
-        System.out.println("Tamanho: " + lista.size());
+        System.out.println("=== TESTE ADD ===");
+        printLista(lista);
 
-        // Teste add(valor, pos)
         lista.add("Pedro", 1);
 
-        System.out.println("\nDepois de adicionar Pedro na posição 1:");
-        System.out.println(lista.get(0));
-        System.out.println(lista.get(1));
-        System.out.println(lista.get(2));
-        System.out.println(lista.get(3));
+        System.out.println("\n=== TESTE ADD(POS) ===");
+        printLista(lista);
+
+        System.out.println("\n=== TESTE BUSCA ===");
+        System.out.println("Contém Maria? " + (ListaUtil.count(lista, "Maria") > 0));
+        System.out.println("Contém Carlos? " + (ListaUtil.count(lista, "Carlos") > 0));
+
+        System.out.println("\n=== TESTE COUNT ===");
+        System.out.println("Maria aparece: " + ListaUtil.count(lista, "Maria") + " vez(es)");
+
+        System.out.println("\n=== TESTE REMOVE(VALOR) ===");
+        System.out.println("Removeu Ana? " + lista.remove("Ana"));
+        printLista(lista);
+
+        System.out.println("\n=== TESTE REMOVE(POS) ===");
+        System.out.println("Removido: " + lista.remove(1));
+        printLista(lista);
+
         System.out.println("Tamanho: " + lista.size());
+    }
 
-        // Teste remove(valor)
-        System.out.println("\nRemoveu Ana? " + lista.remove("Ana"));
+    // =========================
+    // TESTES COM INTEIROS
+    // =========================
+    private static void testListaNumeros() {
 
-        System.out.println("\nDepois de remover Ana:");
-        System.out.println(lista.get(0));
-        System.out.println(lista.get(1));
-        System.out.println(lista.get(2));
-        System.out.println("Tamanho: " + lista.size());
+        Lista<Integer> numeros = new ListaEncadeada<>();
 
-        // Teste remove(pos)
-        System.out.println("\nRemovido da posição 1: " + lista.remove(1));
+        numeros.add(10);
+        numeros.add(5);
+        numeros.add(20);
+        numeros.add(8);
 
-        System.out.println("\nLista final:");
-        System.out.println(lista.get(0));
-        System.out.println(lista.get(1));
-        System.out.println("Tamanho: " + lista.size());
+        System.out.println("\n=== TESTE MAX/MIN ===");
+        printLista(numeros);
+
+        System.out.println("Maior: " + ListaUtil.max(numeros));
+        System.out.println("Menor: " + ListaUtil.min(numeros));
+    }
+
+    // =========================
+    // MÉTODO AUXILIAR
+    // =========================
+    private static <T> void printLista(Lista<T> lista) {
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.get(i));
+        }
     }
 }
