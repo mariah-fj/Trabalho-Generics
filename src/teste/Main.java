@@ -3,6 +3,9 @@ package teste;
 import lista.Lista;
 import lista.ListaEncadeada;
 import lista.ListaUtil;
+import lista.ListaVetor;
+
+import java.util.List;
 
 public class Main {
 
@@ -16,6 +19,8 @@ public class Main {
         // CRIA LISTA
         // =========================
         Lista<String> lista = new ListaEncadeada<>();
+        //Lista<String> lista = new ListaVetor<>();
+
 
         // INSERCAO
         System.out.println("=== INSERÇÃO ===");
