@@ -15,14 +15,10 @@ public class Main {
 
     private static void testarListaEncadeada() {
 
-        // =========================
-        // CRIA LISTA
-        // =========================
-        Lista<String> lista = new ListaEncadeada<>();
-        //Lista<String> lista = new ListaVetor<>();
 
+        // CRIA LISTA COM STRING
+        Lista<String> lista= new ListaVetor<>();
 
-        // INSERCAO
         System.out.println("=== INSERÇÃO ===");
         lista.add("Maria");
         lista.add("Ana");
@@ -34,14 +30,26 @@ public class Main {
 
         print(lista);
 
+        // CRIA LISTA COM NUMERO
+        Lista<Integer> listaNum = new ListaEncadeada<>();
+
+        listaNum.add(3);
+        listaNum.add(6);
+        print(listaNum);
+
+        //BUSCA POR NUMERO
+        boolean existeNum = buscar(listaNum,3);
+        System.out.println(existeNum);
+
+
         // BUSCA (não fiz contains na interface, então coloquei aqui para testar)
         System.out.println("\n=== BUSCA ===");
         boolean existeMaria = buscar(lista, "Maria");
         System.out.println("Existe Maria? " + existeMaria);
 
 
-        // REMOÇÃO
-        // =========================
+        // REMOCAO
+
         System.out.println("\n=== REMOÇÃO ===");
         boolean removeuJoao = lista.remove("Joao");
         System.out.println("Removeu João? " + removeuJoao);
