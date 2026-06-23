@@ -14,13 +14,20 @@ public class ListaVetor <T> implements Lista<T>{
 
     @Override
     public void add(T valor) {
-        itens[size] = valor;
-        size++;
+        add(valor,size);
     }
 
     @Override
     public void add(T valor, int pos) {
+        if (pos < 0 || pos > size){
+            throw new IllegalArgumentException("Posicao invalida");
+        }
+        for (int i = size; i > pos; i--){
+            itens[i] = itens [i - 1];
+        }
 
+        itens[pos] = valor;
+        size++;
     }
 
     @Override
@@ -30,11 +37,27 @@ public class ListaVetor <T> implements Lista<T>{
 
     @Override
     public T remove(int pos) {
-        return null;
+        if (pos < 0 || pos >= size){
+           throw new IllegalArgumentException("Posicao invalida");
+        }
+        T removido = itens [pos];
+        for (int i = pos; i < size - 1; i++){             // desloca os elementos para esquerda
+            itens[i] = itens [i + 1];
+        }
+        itens [size - 1] = null;                         // limpa a ultima posicao
+        size--;                                          // atualiza o tamanho
+
+        return removido;                                 // retorna o elemento removido
     }
 
     @Override
     public boolean remove(T valor) {
+        for (int i = 0; i < size; i++){
+            if (itens[i].equals(valor)){                        // compara cada elemento com o valor recebido usando equals
+                remove(i);
+                return true;
+            }
+        }
         return false;
     }
 
