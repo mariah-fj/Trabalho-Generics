@@ -1,11 +1,13 @@
 package teste;
 
+import lista.ListaEncadeada;
 import lista.ListaVetor;
 
 public class Main {
     public static void main(String[] args) {
 
-        ListaVetor<String> lista = new ListaVetor<>();
+       // ListaVetor<String> lista = new ListaVetor<>();
+        ListaEncadeada<String> lista = new ListaEncadeada<>();
 
         // Adicionando elementos
         lista.add("Maria");
