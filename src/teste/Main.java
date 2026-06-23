@@ -7,71 +7,47 @@ import lista.ListaUtil;
 public class Main {
 
     public static void main(String[] args) {
-
-        testListaString();
-        testListaNumeros();
+        testarListaEncadeada();
     }
 
-    // =========================
-    // TESTES COM STRING
-    // =========================
-    private static void testListaString() {
+    private static void testarListaEncadeada() {
 
+        //  CRIA LISTA
         Lista<String> lista = new ListaEncadeada<>();
 
+        //  INSERE VALORES
         lista.add("Maria");
         lista.add("Ana");
         lista.add("Joao");
+        lista.add("Carlos");
+        lista.add("Ana");
 
-        System.out.println("=== TESTE ADD ===");
-        printLista(lista);
+        System.out.println("=== LISTA INICIAL ===");
+        print(lista);
 
-        lista.add("Pedro", 1);
+        //  BUSCA / COUNT
+        System.out.println("\n=== BUSCA ===");
+        System.out.println("Existe Maria? " + (ListaUtil.count(lista, "Maria") > 0));
+        System.out.println("Ana aparece: " + ListaUtil.count(lista, "Ana"));
 
-        System.out.println("\n=== TESTE ADD(POS) ===");
-        printLista(lista);
+        //  REMOVE
+        System.out.println("\n=== REMOÇÃO ===");
+        lista.remove("Joao");
+        System.out.println("Removeu Joao");
+        print(lista);
 
-        System.out.println("\n=== TESTE BUSCA ===");
-        System.out.println("Contém Maria? " + (ListaUtil.count(lista, "Maria") > 0));
-        System.out.println("Contém Carlos? " + (ListaUtil.count(lista, "Carlos") > 0));
+        //  USO DE MAX / MIN
+        System.out.println("\n=== MAX / MIN ===");
+        System.out.println("Maior (ordem alfabética): " + ListaUtil.max(lista));
+        System.out.println("Menor (ordem alfabética): " + ListaUtil.min(lista));
 
-        System.out.println("\n=== TESTE COUNT ===");
-        System.out.println("Maria aparece: " + ListaUtil.count(lista, "Maria") + " vez(es)");
-
-        System.out.println("\n=== TESTE REMOVE(VALOR) ===");
-        System.out.println("Removeu Ana? " + lista.remove("Ana"));
-        printLista(lista);
-
-        System.out.println("\n=== TESTE REMOVE(POS) ===");
-        System.out.println("Removido: " + lista.remove(1));
-        printLista(lista);
-
-        System.out.println("Tamanho: " + lista.size());
+        //  IMPRESSAO FINAL
+        System.out.println("\n=== LISTA FINAL ===");
+        print(lista);
     }
 
-    // =========================
-    // TESTES COM INTEIROS
-    // =========================
-    private static void testListaNumeros() {
-
-        Lista<Integer> numeros = new ListaEncadeada<>();
-
-        numeros.add(10);
-        numeros.add(5);
-        numeros.add(20);
-        numeros.add(8);
-
-        System.out.println("\n=== TESTE MAX/MIN ===");
-        printLista(numeros);
-
-        System.out.println("Maior: " + ListaUtil.max(numeros));
-        System.out.println("Menor: " + ListaUtil.min(numeros));
-    }
-
-    // =========================
-    // MÉTODO AUXILIAR
-    // =========================
-    private static <T> void printLista(Lista<T> lista) {
+    // metodo auxiliar
+    private static <T> void print(Lista<T> lista) {
         for (int i = 0; i < lista.size(); i++) {
             System.out.println(lista.get(i));
         }
